@@ -16,4 +16,4 @@ admin_id = os.getenv('ADMIN_ID')
 # Указываем авторизационные данные OpenAI
 GPT_key = os.getenv('AITOKEN')
 
-DATABASE_URL = os.getenv("DATABASE_URL", "default_value_if_not_set")
+
