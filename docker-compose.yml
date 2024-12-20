@@ -1,0 +1,26 @@
+services:
+  app:
+    build: ./app
+    volumes:
+      - ./app:/app
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - TZ=Europe/Moscow
+    ports:
+      - '8000:8000'
+    restart: always
+
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - '5438:5432'
+    restart: always
+
+volumes:
+  db_data:
