@@ -2,6 +2,7 @@ from config import labeler
 from functions.read_file import read_file
 from functions.mailing import check
 
+
 labeler.vbml_ignore_case = True
 
 
@@ -31,4 +32,5 @@ async def ivent(message):
 async def resources(message):
     doc = await read_file("resources.txt")
     await message.answer(doc)
+
 

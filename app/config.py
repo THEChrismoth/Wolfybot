@@ -4,16 +4,16 @@ from dotenv import load_dotenv
 import os
 
 # Загрузка переменных окружения из файла .env
-load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
+load_dotenv()
 
 # Устанавливаем токен ВКонтакте API
-api = API(os.getenv('VK_TOKEN'))
+api = API(os.getenv('TOKEN'))
 labeler = BotLabeler()
 
 # Указываем идентификатор администратора группы VK
-admin_id = os.getenv('ADMIN_ID')
+admin_id = os.getenv('ID')
 
 # Указываем авторизационные данные OpenAI
 GPT_key = os.getenv('AITOKEN')
 
-
+DATABASE_URL = os.getenv("DATABASE_URL", "default_value_if_not_set")

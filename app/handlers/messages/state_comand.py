@@ -2,6 +2,7 @@ from config import labeler, admin_id
 from bot import bot
 from vkbottle import BaseStateGroup, CtxStorage
 
+from functions.keyboard import keyboard
 from functions.gpt_request import gpt_request, gpt_image
 
 
@@ -43,7 +44,7 @@ async def message_to_forward(message):
 # Хендлер для создания состояния ожидания запроса к нейросети
 @labeler.message(text="Включить")
 async def start_forwarding(message):
-    await message.answer("Напишите ваш запрос нейросети")
+    await message.answer("Напишите ваш запрос нейросети", keyboard = keyboard)
     await bot.state_dispenser.set(message.peer_id, States.WAITING_FOR_REQUEST)
 
 
@@ -59,7 +60,7 @@ async def message_to_forward(message):
     else:
         answer = await gpt_request(message.text)
 
-        await message.answer(answer.choices[0].message.content)
+        await message.answer(answer.choices[0].message.content, keyboard = keyboard)
 
 
 # Хендлер для создания состояния ожидания запроса для рисовки изображения

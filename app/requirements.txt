@@ -4,4 +4,4 @@ openai
 httpx
 psycopg2-binary
 datetime
-dotenv
+python-dotenv
