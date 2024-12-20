@@ -1,0 +1,7 @@
+asyncio
+vkbottle
+openai
+httpx
+psycopg2-binary
+datetime
+dotenv
