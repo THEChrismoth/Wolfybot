@@ -1,12 +1,25 @@
 import psycopg2
+
 from config import labeler
 from database.database import connect_to_db
 
+
 labeler.vbml_ignore_case = True
 
+mailing_keyboard = (
+    Keyboard(one_time=False, inline=False)
+    .add(Text("подписаться", payload={"command": "subscribe"}), color=KeyboardButtonColor.POSITIVE)
+    .add(Text("отписаться", payload={"command": "unsubscribe"}), color=KeyboardButtonColor.NEGATIVE)
+    .row()
+    .add(Text("вернуться", payload={"command": "evenback"}), color=KeyboardButtonColor.PRIMARY)
+).get_json()
+
+@labeler.message(payload={"command": "mailing"})
+async def start_forwarding(message):
+    await message.answer("выберите действие", keyboard=mailing_keyboard)
 
 # Хендлер для добавления ид пользователя в базу данных при команде "Подписаться"
-@labeler.message(text="Подписаться")
+@labeler.message(payload={"command": "subscribe"})
 async def subscribe(message):
     user_id = message.from_id
     connection = connect_to_db()
@@ -37,8 +50,8 @@ async def subscribe(message):
 
 
 # Хендлер для удаления ид пользователя из базы данных при команде "Отписаться"
-@labeler.message(text="Отписаться")
-async def subscribe(message):
+@labeler.message(payload={"command": "unsubscribe"})
+async def unsubscribe(message):
     user_id = message.from_id
     connection = connect_to_db()
     cursor = connection.cursor()

@@ -37,9 +37,6 @@ async def check():
     # Ивент Адепты в среду
     Wednesday_ADEPT = "19:50"
     ADEPT_MESSAGE = "Собираемся на Адептов"
-    # Ивент кр в четверг
-    Thursday_KR = "19:30"
-    KR_MESSAGE = "Сбор на КР"
     # Ивент Битва династий в пятницу
     Friday_BD = "20:10"
     # Ивент МТВ в субботу
@@ -58,8 +55,6 @@ async def check():
         await send_weekly_message(KH_MESSAGE)
     elif current_time == Wednesday_ADEPT and current_weekday == 2:
         await send_weekly_message(ADEPT_MESSAGE)
-    elif current_time == Thursday_KR and current_weekday == 3:
-        await send_weekly_message(KR_MESSAGE)
     elif current_time == Friday_BD and current_weekday == 4:
         await send_weekly_message(BD_MESSAGE)
     elif current_time == Saturday_MTV and current_weekday == 5:
