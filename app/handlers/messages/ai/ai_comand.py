@@ -1,8 +1,9 @@
-from config import labeler
-from bot import bot
+
 from vkbottle import BaseStateGroup, CtxStorage, Keyboard, KeyboardButtonColor, Text
 
 from functions.gpt_request import gpt_request, gpt_image
+from config import labeler
+from bot import bot
 
 # Определяем состояния
 class States(BaseStateGroup):
@@ -20,6 +21,8 @@ ai_keyboard = (
     .add(Text("вернуться", payload={"command": "back_start"}), color=KeyboardButtonColor.PRIMARY)
     .row()
     .add(Text("режим генирации картинок", payload={"command": "draw"}), color=KeyboardButtonColor.POSITIVE)
+    .row()
+    .add(Text("Оплатить подписку", payload={"command": "pay"}), color=KeyboardButtonColor.SECONDARY)
 
 ).get_json()
 

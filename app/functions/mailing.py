@@ -1,7 +1,8 @@
 import datetime
-from database.database import connect_to_db
-from bot import bot, lw
+from vkbottle.bot import Message, Bot
 
+from database.database import connect_to_db
+from config import  admin_id
 
 # Функция для отправки сообщения всем подписчикам
 async def send_weekly_message(message):
@@ -19,7 +20,9 @@ async def send_weekly_message(message):
 
 
 # Функция для проверки даты и времени + задачи для рассылки
-async def check():
+async def check_mailing():
+    from bot import bot
+
     # Получение текущего времени
     current_time = datetime.datetime.now().strftime("%H:%M")
     # Получение текущего дня недели (0 - понедельник, 6 - воскресенье)
@@ -63,7 +66,4 @@ async def check():
         await send_weekly_message(SADEMAN_MESSAGE)
 
 
-# Проверяем дату и время каждые 45 секунд
-@lw.interval(seconds=59)
-async def work_check():
-    await check()
+

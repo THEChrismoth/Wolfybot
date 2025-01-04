@@ -22,5 +22,17 @@ services:
       - '5438:5432'
     restart: always
 
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Подключаем созданный конфиг
+    environment:
+      - TZ=Europe/Moscow
+    ports:
+      - '80:80'  # Открываем порт 80 для внешнего доступа
+    depends_on:
+      - app
+    restart: always
+
 volumes:
   db_data:
