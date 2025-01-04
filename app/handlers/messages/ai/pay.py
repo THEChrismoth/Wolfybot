@@ -49,7 +49,7 @@ async def get_payment(vk_id, balance):
         )
 
         connection.commit()
-        await bot.api.messages.send(user_id=vk_id, message="Ваш баланс успешно пополнен", random_id=0)
+        await bot.api.messages.send(user_id=vk_id, message=f"Ваш баланс успешно пополнен на : {balance}.руб", random_id=0)
 
     except Exception as e:
         await message.answer(f"Произошла непредвиденная ошибка: {e}")

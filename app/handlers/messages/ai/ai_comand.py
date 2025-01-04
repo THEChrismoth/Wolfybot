@@ -45,6 +45,7 @@ async def start_forwarding(message):
 # Хендлер для отправки ответа нейросети пользователю состояния ожидания запроса
 @labeler.message(state=States.WAITING_FOR_REQUEST)
 async def message_to_forward(message):
+    user_id = message.peer_id
 
     if message.text == "Выключить":
         # Возвращаем пользователя в начальное состояние
@@ -52,7 +53,7 @@ async def message_to_forward(message):
 
         await message.answer("Вы вышли из режима gpt", keyboard = ai_keyboard)
     else:
-        answer = await gpt_request(message.text)
+        answer = await gpt_request(message.text, user_id)
 
         await message.answer(answer.choices[0].message.content, keyboard = off_keyboard)
 
@@ -67,13 +68,15 @@ async def start_forwarding(message):
 # Хендлер для отправки изображения полученного нейросетью
 @labeler.message(state=States.WAITING_FOR_IMAGE)
 async def message_to_forward(message):
+    user_id = message.peer_id
+
     if message.text == "Выключить":
         # Возвращаем пользователя в начальное состояние
         await bot.state_dispenser.delete(message.peer_id)
 
         await message.answer("Вы вышли из режима генерации картинок", keyboard = ai_keyboard)
     else:
-        answer = await gpt_image(message.text)
+        answer = await gpt_image(message.text, user_id)
 
         await message.answer(answer.data[0].url, keyboard = off_keyboard)
 
