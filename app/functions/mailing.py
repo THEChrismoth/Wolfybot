@@ -6,6 +6,8 @@ from config import  admin_id
 
 # Функция для отправки сообщения всем подписчикам
 async def send_weekly_message(message):
+    from bot import bot
+
     connection = connect_to_db()
     cursor = connection.cursor()
     cursor.execute("SELECT user_id FROM subscribers")
@@ -64,6 +66,7 @@ async def check_mailing():
         await send_weekly_message(MTV_MESSAGE)
     elif current_time == Saturday_SADEMAN and current_weekday == 5:
         await send_weekly_message(SADEMAN_MESSAGE)
+
 
 
 

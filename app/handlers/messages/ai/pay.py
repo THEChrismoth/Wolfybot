@@ -14,7 +14,7 @@ async def subscribe_handler(message):
         quickpay_form = 'shop',
         targets = 'Sponsor this project',
         paymentType = 'SB',
-        sum = 2,
+        sum = 100,
         label = new
     )
     pey_keyboard = (
@@ -25,6 +25,7 @@ async def subscribe_handler(message):
     await message.answer("ссылка на оплату", keyboard=pey_keyboard)
 
 async def get_payment(vk_id, balance):
+
     connection = connect_to_db()
     cursor = connection.cursor()
 
@@ -52,7 +53,8 @@ async def get_payment(vk_id, balance):
         await bot.api.messages.send(user_id=vk_id, message=f"Ваш баланс успешно пополнен на : {balance}.руб", random_id=0)
 
     except Exception as e:
-        await message.answer(f"Произошла непредвиденная ошибка: {e}")
+        connection.rollback()
+        await bot.api.messages.send(user_id=vk_id, message=f"Произошла непредвиденная ошибка: {e}", random_id=0)
     finally:
         cursor.close()
         connection.close()
