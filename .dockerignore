@@ -1,0 +1,14 @@
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.gitignore
+.gigaide
+docker-compose.yml
+.dockerignore
+LICENSE.MD
+README.MD

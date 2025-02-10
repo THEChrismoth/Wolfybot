@@ -1,0 +1,12 @@
+asyncio
+vkbottle
+openai
+httpx
+psycopg2-binary
+datetime
+python-dotenv
+yoomoney
+requests
+flask
+gunicorn
+Flask[async]
