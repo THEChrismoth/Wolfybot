@@ -20,4 +20,4 @@ jobs:
             cd ~/Wolfybot 
             git pull origin main
             git status
-            docker-compose up -d --build 
+            /snap/bin/docker-compose up -d --build
