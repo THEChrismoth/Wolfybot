@@ -2,7 +2,7 @@ import flask
 import urllib.parse
 
 from flask import Flask, request
-from handlers.messages.ai.pay import get_payment
+from bot.handlers.messages.ai.pay import get_payment
 
 app = Flask(__name__)
 

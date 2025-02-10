@@ -1,5 +1,5 @@
-from config import admin_id
-from bot import bot
+from config.config import admin_id
+from config.bot import bot
 from database.database import connect_to_db
 
 from vkbottle.bot import BotLabeler, rules

@@ -1,8 +1,6 @@
 import psycopg2
-from vkbottle.bot import MessageEvent
 
-from bot import bot
-from config import labeler
+from config.config import labeler
 from functions.read_file import read_file
 from database.database import connect_to_db
 

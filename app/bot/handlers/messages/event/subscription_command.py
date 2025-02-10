@@ -1,6 +1,6 @@
 import psycopg2
 
-from config import labeler
+from config.config import labeler
 from database.database import connect_to_db
 from vkbottle import Keyboard, KeyboardButtonColor, Text
 

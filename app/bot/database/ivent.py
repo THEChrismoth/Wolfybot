@@ -1,11 +1,11 @@
 import datetime
 
 from database.database import connect_to_db
-from config import admin_id
+from config.config import admin_id
 
 
 async def check_ivent():
-    from bot import bot
+    from config.bot import bot
     # Подключение к БД
     connection = connect_to_db()
     cursor = connection.cursor()

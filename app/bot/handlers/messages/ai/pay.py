@@ -1,10 +1,10 @@
 from vkbottle import Keyboard, KeyboardButtonColor, OpenLink
-from yoomoney import Client, Quickpay
+from yoomoney import Quickpay
 
 from database.database import connect_to_db
 
-from config import labeler, admin_id
-from bot import bot
+from config.config import labeler
+from config.bot import bot
 
 
 @labeler.message(payload={"command": "pay"})

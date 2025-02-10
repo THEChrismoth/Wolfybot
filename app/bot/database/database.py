@@ -1,5 +1,5 @@
 import psycopg2
-from config import DATABASE_URL
+from config.config import DATABASE_URL
 
 
 # Функция для подключения к базе данных

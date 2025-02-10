@@ -1,5 +1,5 @@
-from config import labeler
-from bot import bot
+from config.config import labeler
+from config.bot import bot
 from vkbottle import PhotoMessageUploader, Keyboard, KeyboardButtonColor, Text
 from functions.read_file import read_file
 

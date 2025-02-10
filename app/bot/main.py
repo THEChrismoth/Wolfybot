@@ -1,4 +1,4 @@
-from bot import bot
+from config.bot import bot
 from handlers import labelers
 
 # Подключаем хендлеры

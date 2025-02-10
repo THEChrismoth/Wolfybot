@@ -1,5 +1,4 @@
-from config import labeler
-from bot import bot
+from config.config import labeler
 
 from vkbottle import  Keyboard, KeyboardButtonColor, Text
 

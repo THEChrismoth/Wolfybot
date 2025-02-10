@@ -1,8 +1,8 @@
 from vkbottle import BaseStateGroup, CtxStorage, Keyboard, KeyboardButtonColor, Text
 
 from functions.gpt_request import gpt_request, gpt_image
-from config import labeler
-from bot import bot
+from config.config import labeler
+from config.bot import bot
 
 
 # Определяем состояния

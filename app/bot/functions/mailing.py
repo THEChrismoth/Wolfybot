@@ -5,7 +5,7 @@ from database.database import connect_to_db
 
 # Функция для отправки сообщения всем подписчикам
 async def send_weekly_message(message):
-    from bot import bot
+    from config.bot import bot
 
     connection = connect_to_db()
     cursor = connection.cursor()
@@ -22,7 +22,6 @@ async def send_weekly_message(message):
 
 # Функция для проверки даты и времени + задачи для рассылки
 async def check_mailing():
-    from bot import bot
 
     # Получение текущего времени
     current_time = datetime.datetime.now().strftime("%H:%M")

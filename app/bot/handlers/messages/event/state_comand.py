@@ -1,5 +1,5 @@
-from config import labeler, admin_id
-from bot import bot
+from config.config import labeler, admin_id
+from config.bot import bot
 from vkbottle import BaseStateGroup, CtxStorage
 
 

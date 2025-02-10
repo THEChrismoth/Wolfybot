@@ -1,8 +1,8 @@
 from httpx import AsyncClient
 from openai import AsyncOpenAI
-from config import GPT_key
+from config.config import GPT_key
 from database.database import connect_to_db
-from bot import bot
+from config.bot import bot
 
 
 # Создаем экземпляр клиента OpenAI с использованием прокси и базы данных
