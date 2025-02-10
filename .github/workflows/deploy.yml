@@ -2,7 +2,7 @@ name: deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -17,6 +17,6 @@ jobs:
           port: ${{ secrets.PORT}}
           script: |
             cd ~/Wolfybot 
-            git pull origin master
-            git status 
+            git pull origin main
+            git status
             docker-compose up -d --build 
