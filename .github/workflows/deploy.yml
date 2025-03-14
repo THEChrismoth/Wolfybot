@@ -34,18 +34,13 @@ jobs:
         run: |
           docker build -t ghcr.io/thechrismoth/wolfybot/app:$TAG ./app
           docker build -t ghcr.io/thechrismoth/wolfybot/nginx:$TAG ./nginx
-          docker tag ghcr.io/thechrismoth/wolfybot/app:$TAG ghcr.io/thechrismoth/wolfybot/app:latest
-          docker tag ghcr.io/thechrismoth/wolfybot/nginx:$TAG ghcr.io/thechrismoth/wolfybot/nginx:latest
           docker push ghcr.io/thechrismoth/wolfybot/app:$TAG
           docker push ghcr.io/thechrismoth/wolfybot/nginx:$TAG
-          docker push ghcr.io/thechrismoth/wolfybot/app:latest
-          docker push ghcr.io/thechrismoth/wolfybot/nginx:latest
 
   deploy:
     runs-on: ubuntu-latest
     needs: build-and-push
     steps:
-      # Шаг 9: Деплой на сервер
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
         with:
