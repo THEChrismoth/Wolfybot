@@ -56,6 +56,7 @@ jobs:
             export ID='${{ secrets.ID }}'
             export AITOKEN='${{ secrets.AITOKEN }}'
             export TAG=${{ github.event.release.tag_name }}
+            echo "TAG=$TAG"
             docker compose down
             docker compose pull
             docker compose up -d
